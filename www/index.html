@@ -10,12 +10,15 @@
     <link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
 
         <script>
-            function onBodyLoad(){		
+            
+            function onBodyLoad() {		
                 document.addEventListener("deviceready", onDeviceReady, false);
-                document.addEventListener('touchmove', function(e){ e.preventDefault(); });
             }
             
             function onDeviceReady() {
+                document.addEventListener("resume", onResume, false);
+                document.addEventListener('touchmove', function(e){ e.preventDefault(); });
+                
                 $(document).ready(function(){
                       
                       navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -113,6 +116,12 @@
                 TwitterDemo.setup();
                 
             } //onDeviceReady
+            
+            
+            function onResume() {
+                alert("herlaad nu");
+                //window.location.href="file://www/index.html";
+            }
             
             TwitterDemo = {
                 $:function(id){
