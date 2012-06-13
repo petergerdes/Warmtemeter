@@ -41,8 +41,9 @@
 		AFA8330B151548A30066B464 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA8330A151548A30066B464 /* Default@2x.png */; };
 		AFA8330D151548BB0066B464 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA8330C151548BB0066B464 /* Default.png */; };
 		AFFD5924155692C1007E74BA /* TwitterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AFFD5923155692C1007E74BA /* TwitterPlugin.m */; };
-		D098C39E1587702D0054EDEB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D098C39C1587702D0054EDEB /* Icon.png */; };
-		D098C39F1587702D0054EDEB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D098C39D1587702D0054EDEB /* Icon@2x.png */; };
+		D049B8D61588A0880045E8DD /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D049B8D41588A0880045E8DD /* Icon.png */; };
+		D049B8D71588A0880045E8DD /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D049B8D51588A0880045E8DD /* Icon@2x.png */; };
+		D049B8DA1588A0990045E8DD /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D049B8D91588A0990045E8DD /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,8 +88,9 @@
 		AFA8330C151548BB0066B464 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AFFD5923155692C1007E74BA /* TwitterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterPlugin.m; path = Plugins/TwitterPlugin.m; sourceTree = "<group>"; };
 		AFFD5925155692CB007E74BA /* TwitterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterPlugin.h; path = Plugins/TwitterPlugin.h; sourceTree = "<group>"; };
-		D098C39C1587702D0054EDEB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = "../../../Dropbox/App Icon [Rounded]/Icon.png"; sourceTree = "<group>"; };
-		D098C39D1587702D0054EDEB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../../Dropbox/App Icon [Rounded]/Icon@2x.png"; sourceTree = "<group>"; };
+		D049B8D41588A0880045E8DD /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = "../../../Dropbox/MakeItFly/Hoewarmishetvandaag/Warmtemeter iPhone/App Icon [Rounded]/Icon.png"; sourceTree = "<group>"; };
+		D049B8D51588A0880045E8DD /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../../Dropbox/MakeItFly/Hoewarmishetvandaag/Warmtemeter iPhone/App Icon [Rounded]/Icon@2x.png"; sourceTree = "<group>"; };
+		D049B8D91588A0990045E8DD /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +130,9 @@
 		AF729D12150A6BDF007839BB = {
 			isa = PBXGroup;
 			children = (
-				D098C39C1587702D0054EDEB /* Icon.png */,
-				D098C39D1587702D0054EDEB /* Icon@2x.png */,
+				D049B8D91588A0990045E8DD /* Icon@2x.png */,
+				D049B8D41588A0880045E8DD /* Icon.png */,
+				D049B8D51588A0880045E8DD /* Icon@2x.png */,
 				AFA8330C151548BB0066B464 /* Default.png */,
 				AFA8330A151548A30066B464 /* Default@2x.png */,
 				AFA833081515037C0066B464 /* Accounts.framework */,
@@ -330,8 +333,9 @@
 				AF729D73150A6C54007839BB /* www in Resources */,
 				AFA8330B151548A30066B464 /* Default@2x.png in Resources */,
 				AFA8330D151548BB0066B464 /* Default.png in Resources */,
-				D098C39E1587702D0054EDEB /* Icon.png in Resources */,
-				D098C39F1587702D0054EDEB /* Icon@2x.png in Resources */,
+				D049B8D61588A0880045E8DD /* Icon.png in Resources */,
+				D049B8D71588A0880045E8DD /* Icon@2x.png in Resources */,
+				D049B8DA1588A0990045E8DD /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
