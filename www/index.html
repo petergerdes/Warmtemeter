@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta charset="utf-8">
+	<script type="text/javascript" charset="utf-8" src="js/phonegap-1.4.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/TwitterPlugin.js"></script>
+    <link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
+
+        <script>
+            function onBodyLoad(){		
+                document.addEventListener("deviceready", onDeviceReady, false);
+                document.addEventListener('touchmove', function(e){ e.preventDefault(); });
+            }
+            
+            function onDeviceReady() {
+                $(document).ready(function(){
+                      
+                      navigator.geolocation.getCurrentPosition(onSuccess, onError);
+                                  
+                      // onSuccess Geolocation
+                      function onSuccess(position) {
+                      var element = document.getElementById('geolocation');
+                      
+                      var lat  = position.coords.latitude;
+                      var long = position.coords.longitude;
+                                  
+                      apiurl = "http://api.wunderground.com/api/78868e284fea75bb/geolookup/conditions/forecast/q/" + lat + "," + long + ".json";
+                      $.ajax({
+                             url: apiurl,
+                             dataType: "jsonp",
+                             xhrFields: {
+                             withCredentials: true
+                             },
+                             error: function() {
+                             document.getElementById('warmte').innerHTML='wij zijn de zon even kwijt';
+                             },
+                             
+                             success: function(parsed_json) {
+                                 var location = parsed_json['location']['city'];
+                                 var temp_c = parsed_json['current_observation']['temp_c'] +"";
+                                 //var temp_c = '13.6';
+                                 var temp_d  = (Math.round(temp_c));
+                                 var windchill = parsed_json['current_observation']['windchill_c'];
+                                 //alert(windchill);
+                                 if (temp_d < 11) {
+                                    document.getElementById('warmte').innerHTML = "helemaal niet warm";
+                                    document.getElementById('zon').innerHTML = temp_d + "<small>°C</small>";
+                                 } else if (temp_d < 16) {
+                                    document.getElementById('warmte').innerHTML = "niet echt warm";
+                                    document.getElementById('zon').innerHTML = temp_d + "<small>°C</small>";
+                                 } else if (temp_d < 19) {
+                                    document.getElementById('warmte').innerHTML = "beetje warm";
+                                    document.getElementById('zon').innerHTML = temp_d + "<small>°C</small>";
+                                 } else if (temp_d < 26) {
+                                    document.getElementById('warmte').innerHTML = "aardig warm";
+                                    document.getElementById('zon').innerHTML = temp_d + "<small>°C</small>";
+                                 } else if (temp_d < 31) {
+                                    document.getElementById('warmte').innerHTML = "warm";
+                                    document.getElementById('zon').innerHTML = temp_d + "<small>°C</small>";
+                                 } else if (temp_d < 36) {
+                                    document.getElementById('warmte').innerHTML = "erg warm";
+                                    document.getElementById('zon').innerHTML = temp_d + "<small>°C</small>";
+                                 } else if (temp_d > 35) {
+                                    document.getElementById('warmte').innerHTML = "heel erg warm";
+                                    document.getElementById('zon').innerHTML = temp_d + "<small>°C</small>";
+                                 } else {
+                                    document.getElementById('warmte').innerHTML = "wij zijn de zon kwijt";
+                                 }
+                                }
+                            
+                             }); //End $ajax
+                                  
+                    }   //End function onSuccess
+                                  
+                      // onError Callback receives a PositionError object
+                      //
+                      function onError(error) {
+                      alert('code: '    + error.code    + '\n' +
+                            'message: ' + error.message + '\n');
+                      }
+                    
+                      $('#info').click(function () {
+                           if ($('#credits').css('bottom') === '-40px') {
+                                       $('#credits').animate({"bottom": "40px"}, "100");
+                                       } else {
+                                       $('#credits').animate({"bottom": "-40px"}, "100");
+                                       }
+                        });
+                    
+                      $('#share').click(function () {
+                           if ($('#sharemenu').css('bottom') === '0px') {
+                                       $('#sharemenu').animate({"bottom": "156px"}, "100");
+                           } else {
+                                       $('#sharemenu').animate({"bottom": "0px"}, "100");
+                           }
+                        });
+                      
+                      $('#tweet').click(function() {
+                            $('#sharemenu').animate({"bottom": "0px"}, "100");
+                      });
+                      $('#cancel').click(function() {
+                            $('#sharemenu').animate({"bottom": "0px"}, "100");
+                      });
+                      
+                      var currentDate = new Date();
+                      document.getElementById('credits').innerHTML += currentDate.getFullYear();
+                                  
+                }); // onDocumentready
+                
+                TwitterDemo.setup();
+                
+            } //onDeviceReady
+            
+            TwitterDemo = {
+                $:function(id){
+                    return document.getElementById(id);
+                },
+                
+                setup:function(){
+                    var tests = ["tweet"];
+                    for(var i=0, l=tests.length; i<l; i++){
+                        this.$(tests[i]).onclick = this[tests[i]];
+                    }
+                },
+                
+                tweet:function(){
+                    window.plugins.twitter.composeTweet(function(s){}, function(e){}, "Kijk is hoe warm het is!", 
+                                                        {urlAttach:"http://www.hoewarmishetvandaag.nl/"});
+                }
+            };
+
+            </script>
+  </head>
+    
+  <body onload="onBodyLoad()">
+    <div class="wrapper">
+        <h1 class="title">Hoe warm is het vandaag?</h1>
+            <div id="warmte"><small id="zoeken">Op zoek naar de zon...</small></div>
+            <div id="zon"></div>
+        
+        <div class="bottom">
+            <img src="img/heart.png" id="info" />
+            <img src="img/share.png" id="share" />
+        </div>
+        
+        <div id="credits">een project van <a href="https://twitter.com/#!/petergerdes" target="_blank">@petergerdes</a><br /> en <a href="https://twitter.com/#!/paul_bremer" target="_blank">@paul_bremer</a> &copy;</div>
+        <div id="sharemenu">
+            <span class="button-inset"><a href="#" class="button grey" id="tweet" ontouchstart="">Tweet</a></span>
+            <span class="button-inset"><a href="#" class="button dark-grey" id="cancel" ontouchstart="">Cancel</a></span>
+        </div>
+        
+    </div>
+
+  </body>
+</html>
